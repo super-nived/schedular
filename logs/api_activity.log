@@ -26,3 +26,205 @@
 2025-07-05 20:32:12,514 - INFO - Received POST request for /api/jobs
 2025-07-05 20:33:06,025 - INFO - Received POST request for /api/jobs
 2025-07-05 20:33:06,025 - INFO - Received POST request for /api/jobs
+2025-07-06 04:35:26,405 - INFO - Received POST request for /api/jobs
+2025-07-06 04:35:26,405 - INFO - Received POST request for /api/jobs
+2025-07-06 04:50:59,213 - INFO - Received POST request for /api/jobs
+2025-07-06 04:50:59,213 - INFO - Received POST request for /api/jobs
+2025-07-06 04:51:33,107 - INFO - Received POST request for /api/jobs
+2025-07-06 04:51:33,107 - INFO - Received POST request for /api/jobs
+2025-07-06 05:00:08,793 - INFO - Received POST request for /api/jobs
+2025-07-06 05:00:08,793 - INFO - Received POST request for /api/jobs
+2025-07-06 05:00:44,544 - INFO - Received POST request for /api/jobs
+2025-07-06 05:00:44,544 - INFO - Received POST request for /api/jobs
+2025-07-06 05:01:51,238 - INFO - Received POST request for /api/jobs
+2025-07-06 05:01:51,238 - INFO - Received POST request for /api/jobs
+2025-07-06 05:03:10,475 - INFO - Received POST request for /api/jobs
+2025-07-06 05:03:10,475 - INFO - Received POST request for /api/jobs
+2025-07-06 05:03:58,906 - INFO - Received POST request for /api/jobs
+2025-07-06 05:03:58,906 - INFO - Received POST request for /api/jobs
+2025-07-06 05:04:36,799 - INFO - Received POST request for /api/jobs
+2025-07-06 05:04:36,799 - INFO - Received POST request for /api/jobs
+2025-07-06 05:06:30,884 - INFO - Received POST request for /api/jobs
+2025-07-06 05:06:30,884 - INFO - Received POST request for /api/jobs
+2025-07-06 05:14:55,307 - INFO - Received POST request for /api/jobs
+2025-07-06 05:14:55,307 - INFO - Received POST request for /api/jobs
+2025-07-06 05:17:42,709 - INFO - Received POST request for /api/jobs
+2025-07-06 05:17:42,709 - INFO - Received POST request for /api/jobs
+2025-07-06 05:18:16,554 - INFO - Received POST request for /api/jobs
+2025-07-06 05:18:16,554 - INFO - Received POST request for /api/jobs
+2025-07-06 05:18:39,407 - INFO - Received POST request for /api/jobs
+2025-07-06 05:18:39,407 - INFO - Received POST request for /api/jobs
+2025-07-06 05:21:50,719 - INFO - Received POST request for /api/jobs
+2025-07-06 05:21:50,719 - INFO - Received POST request for /api/jobs
+2025-07-06 15:38:24,693 - INFO - Received POST request for /api/jobs
+2025-07-06 15:38:24,693 - INFO - Received POST request for /api/jobs
+2025-07-06 15:49:06,886 - INFO - Received POST request for /api/jobs
+2025-07-06 15:49:06,886 - INFO - Received POST request for /api/jobs
+2025-07-06 15:56:04,080 - ERROR - [Failed Section: Admin Login] Authentication failed | Details: Failed to authenticate admin with email None. Error: Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:56:04,080 - ERROR - [Failed Section: Admin Login] Authentication failed | Details: Failed to authenticate admin with email None. Error: Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:56:04,081 - ERROR - [Login Error] Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:56:04,081 - ERROR - [Login Error] Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:56:04,081 - ERROR - [Main Error] Failed to authenticate with Pocketbase
+2025-07-06 15:56:04,081 - ERROR - [Main Error] Failed to authenticate with Pocketbase
+2025-07-06 15:56:08,146 - ERROR - [Failed Section: Admin Login] Authentication failed | Details: Failed to authenticate admin with email None. Error: Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:56:08,146 - ERROR - [Failed Section: Admin Login] Authentication failed | Details: Failed to authenticate admin with email None. Error: Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:56:08,146 - ERROR - [Login Error] Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:56:08,146 - ERROR - [Login Error] Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:56:08,147 - ERROR - [Main Error] Failed to authenticate with Pocketbase
+2025-07-06 15:56:08,147 - ERROR - [Main Error] Failed to authenticate with Pocketbase
+2025-07-06 15:56:11,675 - ERROR - [Failed Section: Admin Login] Authentication failed | Details: Failed to authenticate admin with email None. Error: Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:56:11,675 - ERROR - [Failed Section: Admin Login] Authentication failed | Details: Failed to authenticate admin with email None. Error: Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:56:11,676 - ERROR - [Login Error] Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:56:11,676 - ERROR - [Login Error] Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:56:11,676 - ERROR - [Main Error] Failed to authenticate with Pocketbase
+2025-07-06 15:56:11,676 - ERROR - [Main Error] Failed to authenticate with Pocketbase
+2025-07-06 15:57:17,297 - ERROR - [Failed Section: Admin Login] Authentication failed | Details: Failed to authenticate admin with email None. Error: Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:57:17,297 - ERROR - [Failed Section: Admin Login] Authentication failed | Details: Failed to authenticate admin with email None. Error: Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:57:17,298 - ERROR - [Login Error] Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:57:17,298 - ERROR - [Login Error] Invalid URL 'None/api/admins/auth-with-password': No scheme supplied. Perhaps you meant https://None/api/admins/auth-with-password?
+2025-07-06 15:57:17,298 - ERROR - [Main Error] Failed to authenticate with Pocketbase
+2025-07-06 15:57:17,298 - ERROR - [Main Error] Failed to authenticate with Pocketbase
+2025-07-06 16:12:23,405 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.541s
+2025-07-06 16:12:23,405 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.541s
+2025-07-06 16:12:23,407 - WARNING - [Main Warning] No job found for jobNumber '5004'
+2025-07-06 16:12:23,407 - WARNING - [Main Warning] No job found for jobNumber '5004'
+2025-07-06 16:12:23,407 - WARNING - [Main Warning] No job found for jobNumber '5005'
+2025-07-06 16:12:23,407 - WARNING - [Main Warning] No job found for jobNumber '5005'
+2025-07-06 16:12:23,407 - WARNING - [Main Warning] No job found for jobNumber '5006'
+2025-07-06 16:12:23,407 - WARNING - [Main Warning] No job found for jobNumber '5006'
+2025-07-06 16:12:30,601 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.747s
+2025-07-06 16:12:30,601 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.747s
+2025-07-06 16:12:30,602 - WARNING - [Main Warning] No job found for jobNumber '5004'
+2025-07-06 16:12:30,602 - WARNING - [Main Warning] No job found for jobNumber '5004'
+2025-07-06 16:12:30,603 - WARNING - [Main Warning] No job found for jobNumber '5005'
+2025-07-06 16:12:30,603 - WARNING - [Main Warning] No job found for jobNumber '5005'
+2025-07-06 16:12:30,603 - WARNING - [Main Warning] No job found for jobNumber '5006'
+2025-07-06 16:12:30,603 - WARNING - [Main Warning] No job found for jobNumber '5006'
+2025-07-06 16:14:14,747 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.850s
+2025-07-06 16:14:14,747 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.850s
+2025-07-06 16:15:50,323 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 0.314s
+2025-07-06 16:15:50,323 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 0.314s
+2025-07-06 16:16:15,778 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.669s
+2025-07-06 16:16:15,778 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.669s
+2025-07-06 16:17:53,707 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.885s
+2025-07-06 16:17:53,707 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.885s
+2025-07-06 16:25:44,241 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 4.122s
+2025-07-06 16:25:44,241 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 4.122s
+2025-07-06 16:27:22,730 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 3.615s
+2025-07-06 16:27:22,730 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 3.615s
+2025-07-06 16:27:54,697 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.658s
+2025-07-06 16:27:54,697 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.658s
+2025-07-06 16:28:02,912 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.480s
+2025-07-06 16:28:02,912 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.480s
+2025-07-06 16:28:09,439 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.313s
+2025-07-06 16:28:09,439 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.313s
+2025-07-06 16:28:24,924 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.190s
+2025-07-06 16:28:24,924 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.190s
+2025-07-06 16:28:32,309 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.020s
+2025-07-06 16:28:32,309 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.020s
+2025-07-06 16:28:37,724 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 0.849s
+2025-07-06 16:28:37,724 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 0.849s
+2025-07-06 16:28:44,074 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.679s
+2025-07-06 16:28:44,074 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.679s
+2025-07-06 16:28:50,735 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.604s
+2025-07-06 16:28:50,735 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.604s
+2025-07-06 16:29:03,496 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.407s
+2025-07-06 16:29:03,496 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.407s
+2025-07-06 16:29:09,700 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.700s
+2025-07-06 16:29:09,700 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.700s
+2025-07-06 16:29:17,524 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.757s
+2025-07-06 16:29:17,524 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.757s
+2025-07-06 16:47:29,694 - INFO - [DB Fetch Time] Retrieved 0 records for 3 job(s) in 0.818s
+2025-07-06 16:47:29,694 - INFO - [DB Fetch Time] Retrieved 0 records for 3 job(s) in 0.818s
+2025-07-06 16:47:29,695 - ERROR - [Failed Section: Fetch Machine Records] No records found | Details: No machine records found for job numbers ['123', '456', '789']
+2025-07-06 16:47:29,695 - ERROR - [Failed Section: Fetch Machine Records] No records found | Details: No machine records found for job numbers ['123', '456', '789']
+2025-07-06 16:47:29,695 - ERROR - [Main Error] Failed to fetch job data
+2025-07-06 16:47:29,695 - ERROR - [Main Error] Failed to fetch job data
+2025-07-06 16:48:03,904 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.441s
+2025-07-06 16:48:03,904 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.441s
+2025-07-06 17:03:04,923 - INFO - Received POST request for /api/jobs
+2025-07-06 17:03:04,923 - INFO - Received POST request for /api/jobs
+2025-07-06 17:27:11,154 - INFO - Received POST request for /api/jobs
+2025-07-06 17:27:11,154 - INFO - Received POST request for /api/jobs
+2025-07-06 22:51:45,334 - INFO - Received POST request for /api/schedule_jobs
+2025-07-06 22:51:45,334 - INFO - Received POST request for /api/schedule_jobs
+2025-07-06 22:51:47,967 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.682s
+2025-07-06 22:51:47,967 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 1.682s
+2025-07-06 22:51:51,639 - INFO - [Downtime Request] Page 1: 0 records fetched in 2.384s
+2025-07-06 22:51:51,639 - INFO - [Downtime Request] Page 1: 0 records fetched in 2.384s
+2025-07-06 22:51:51,639 - INFO - [DB Fetch Time] Retrieved 0 downtime records after 2025-07-06T00:00:00 in 2.385s
+2025-07-06 22:51:51,639 - INFO - [DB Fetch Time] Retrieved 0 downtime records after 2025-07-06T00:00:00 in 2.385s
+2025-07-06 22:51:51,639 - ERROR - [Failed Section: Fetch Downtime Records] No records found | Details: No downtime records found after 2025-07-06T00:00:00
+2025-07-06 22:51:51,639 - ERROR - [Failed Section: Fetch Downtime Records] No records found | Details: No downtime records found after 2025-07-06T00:00:00
+2025-07-06 22:51:51,640 - ERROR - [Main Error] Failed to fetch downtime data
+2025-07-06 22:51:51,640 - ERROR - [Main Error] Failed to fetch downtime data
+2025-07-06 22:51:51,640 - ERROR - Failed to fetch downtime details: Failed to fetch downtime data
+2025-07-06 22:51:51,640 - ERROR - Failed to fetch downtime details: Failed to fetch downtime data
+2025-07-06 22:54:10,747 - INFO - Received POST request for /api/schedule_jobs
+2025-07-06 22:54:10,747 - INFO - Received POST request for /api/schedule_jobs
+2025-07-06 22:54:12,256 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 0.684s
+2025-07-06 22:54:12,256 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 0.684s
+2025-07-06 22:54:12,965 - INFO - [Downtime Request] Page 1: 0 records fetched in 0.267s
+2025-07-06 22:54:12,965 - INFO - [Downtime Request] Page 1: 0 records fetched in 0.267s
+2025-07-06 22:54:12,966 - INFO - [DB Fetch Time] Retrieved 0 downtime records after 2025-07-06T00:00:00 in 0.268s
+2025-07-06 22:54:12,966 - INFO - [DB Fetch Time] Retrieved 0 downtime records after 2025-07-06T00:00:00 in 0.268s
+2025-07-06 22:54:12,966 - ERROR - [Failed Section: Fetch Downtime Records] No records found | Details: No downtime records found after 2025-07-06T00:00:00
+2025-07-06 22:54:12,966 - ERROR - [Failed Section: Fetch Downtime Records] No records found | Details: No downtime records found after 2025-07-06T00:00:00
+2025-07-06 22:54:12,966 - ERROR - [Main Error] Failed to fetch downtime data
+2025-07-06 22:54:12,966 - ERROR - [Main Error] Failed to fetch downtime data
+2025-07-06 22:54:12,967 - ERROR - Failed to fetch downtime details: Failed to fetch downtime data
+2025-07-06 22:54:12,967 - ERROR - Failed to fetch downtime details: Failed to fetch downtime data
+2025-07-06 22:57:53,543 - INFO - Received POST request for /api/schedule_jobs
+2025-07-06 22:57:53,543 - INFO - Received POST request for /api/schedule_jobs
+2025-07-06 22:57:56,912 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.547s
+2025-07-06 22:57:56,912 - INFO - [DB Fetch Time] Retrieved 97 records for 3 job(s) in 2.547s
+2025-07-06 22:57:57,965 - INFO - [Downtime Request] Page 1: 0 records fetched in 0.168s
+2025-07-06 22:57:57,965 - INFO - [Downtime Request] Page 1: 0 records fetched in 0.168s
+2025-07-06 22:57:57,965 - INFO - [DB Fetch Time] Retrieved 0 downtime records after 2025-07-06T00:00:00 in 0.168s
+2025-07-06 22:57:57,965 - INFO - [DB Fetch Time] Retrieved 0 downtime records after 2025-07-06T00:00:00 in 0.168s
+2025-07-06 22:57:57,965 - ERROR - [Failed Section: Fetch Downtime Records] No records found | Details: No downtime records found after 2025-07-06T00:00:00
+2025-07-06 22:57:57,965 - ERROR - [Failed Section: Fetch Downtime Records] No records found | Details: No downtime records found after 2025-07-06T00:00:00
+2025-07-06 22:57:57,966 - ERROR - [Main Error] Failed to fetch downtime data
+2025-07-06 22:57:57,966 - ERROR - [Main Error] Failed to fetch downtime data
+2025-07-06 22:57:57,966 - ERROR - Failed to fetch downtime details: Failed to fetch downtime data
+2025-07-06 22:57:57,966 - ERROR - Failed to fetch downtime details: Failed to fetch downtime data
+2025-07-06 23:06:35,910 - INFO - Received POST request for /api/schedule_jobs
+2025-07-06 23:06:35,910 - INFO - Received POST request for /api/schedule_jobs
+2025-07-06 23:06:43,255 - ERROR - [Failed Section: Admin Login] Authentication failed | Details: Failed to authenticate admin with email abhi-s@industryapps.net. Error: HTTPSConnectionPool(host='pb.uat.industryapps.net', port=443): Max retries exceeded with url: /UATOCC/api/admins/auth-with-password (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x757454e4bc50>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2025-07-06 23:06:43,255 - ERROR - [Failed Section: Admin Login] Authentication failed | Details: Failed to authenticate admin with email abhi-s@industryapps.net. Error: HTTPSConnectionPool(host='pb.uat.industryapps.net', port=443): Max retries exceeded with url: /UATOCC/api/admins/auth-with-password (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x757454e4bc50>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2025-07-06 23:06:43,255 - ERROR - [Login Error] HTTPSConnectionPool(host='pb.uat.industryapps.net', port=443): Max retries exceeded with url: /UATOCC/api/admins/auth-with-password (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x757454e4bc50>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2025-07-06 23:06:43,255 - ERROR - [Login Error] HTTPSConnectionPool(host='pb.uat.industryapps.net', port=443): Max retries exceeded with url: /UATOCC/api/admins/auth-with-password (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x757454e4bc50>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2025-07-06 23:06:43,256 - ERROR - [Main Error] Failed to authenticate with Pocketbase
+2025-07-06 23:06:43,256 - ERROR - [Main Error] Failed to authenticate with Pocketbase
+2025-07-06 23:06:43,256 - ERROR - Failed to fetch job details: Failed to authenticate with Pocketbase
+2025-07-06 23:06:43,256 - ERROR - Failed to fetch job details: Failed to authenticate with Pocketbase
+2025-07-06 23:06:55,473 - INFO - Received POST request for /api/schedule_jobs
+2025-07-06 23:06:55,473 - INFO - Received POST request for /api/schedule_jobs
+2025-07-06 23:07:03,631 - ERROR - [Failed Section: Admin Login] Authentication failed | Details: Failed to authenticate admin with email abhi-s@industryapps.net. Error: HTTPSConnectionPool(host='pb.uat.industryapps.net', port=443): Max retries exceeded with url: /UATOCC/api/admins/auth-with-password (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x757454e84f20>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2025-07-06 23:07:03,631 - ERROR - [Failed Section: Admin Login] Authentication failed | Details: Failed to authenticate admin with email abhi-s@industryapps.net. Error: HTTPSConnectionPool(host='pb.uat.industryapps.net', port=443): Max retries exceeded with url: /UATOCC/api/admins/auth-with-password (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x757454e84f20>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2025-07-06 23:07:03,631 - ERROR - [Login Error] HTTPSConnectionPool(host='pb.uat.industryapps.net', port=443): Max retries exceeded with url: /UATOCC/api/admins/auth-with-password (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x757454e84f20>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2025-07-06 23:07:03,631 - ERROR - [Login Error] HTTPSConnectionPool(host='pb.uat.industryapps.net', port=443): Max retries exceeded with url: /UATOCC/api/admins/auth-with-password (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x757454e84f20>: Failed to establish a new connection: [Errno 111] Connection refused'))
+2025-07-06 23:07:03,631 - ERROR - [Main Error] Failed to authenticate with Pocketbase
+2025-07-06 23:07:03,631 - ERROR - [Main Error] Failed to authenticate with Pocketbase
+2025-07-06 23:07:03,632 - ERROR - Failed to fetch job details: Failed to authenticate with Pocketbase
+2025-07-06 23:07:03,632 - ERROR - Failed to fetch job details: Failed to authenticate with Pocketbase
+2025-07-07 09:40:52,257 - INFO - [Downtime Request] Page 1: 0 records fetched in 0.815s
+2025-07-07 09:40:52,257 - INFO - [Downtime Request] Page 1: 0 records fetched in 0.815s
+2025-07-07 09:40:52,257 - INFO - [DB Fetch Time] Retrieved 0 downtime records after 2025-07-06T00:00:00 in 0.815s
+2025-07-07 09:40:52,257 - INFO - [DB Fetch Time] Retrieved 0 downtime records after 2025-07-06T00:00:00 in 0.815s
+2025-07-07 09:40:52,257 - ERROR - [Failed Section: Fetch Downtime Records] No records found | Details: No downtime records found after 2025-07-06T00:00:00
+2025-07-07 09:40:52,257 - ERROR - [Failed Section: Fetch Downtime Records] No records found | Details: No downtime records found after 2025-07-06T00:00:00
+2025-07-07 09:40:52,258 - ERROR - [Main Error] Failed to fetch downtime data
+2025-07-07 09:40:52,258 - ERROR - [Main Error] Failed to fetch downtime data
+2025-07-07 09:50:18,051 - INFO - [Downtime Request] Page 1: 1 records fetched in 0.816s
+2025-07-07 09:50:18,051 - INFO - [Downtime Request] Page 1: 1 records fetched in 0.816s
+2025-07-07 09:50:18,052 - INFO - [DB Fetch Time] Retrieved 1 downtime records after 2025-07-06T00:00:00 in 0.817s
+2025-07-07 09:50:18,052 - INFO - [DB Fetch Time] Retrieved 1 downtime records after 2025-07-06T00:00:00 in 0.817s
+2025-07-07 09:50:52,737 - INFO - [Downtime Request] Page 1: 1 records fetched in 0.673s
+2025-07-07 09:50:52,737 - INFO - [Downtime Request] Page 1: 1 records fetched in 0.673s
+2025-07-07 09:50:52,737 - INFO - [DB Fetch Time] Retrieved 1 downtime records after 2025-07-06T00:00:00 in 0.673s
+2025-07-07 09:50:52,737 - INFO - [DB Fetch Time] Retrieved 1 downtime records after 2025-07-06T00:00:00 in 0.673s
+2025-07-07 09:50:52,738 - INFO - [Transform Time] Processed 1 downtime(s) in 0.000s
+2025-07-07 09:50:52,738 - INFO - [Transform Time] Processed 1 downtime(s) in 0.000s
+2025-07-07 09:50:52,738 - INFO - [Total Process Time] Complete downtime process took 1.811s
+2025-07-07 09:50:52,738 - INFO - [Total Process Time] Complete downtime process took 1.811s
