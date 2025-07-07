@@ -1,5 +1,62 @@
-# Ignore virtual environment
-venv/
-
-# Ignore Python cache files
+# Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
+*$py.class
+
+# Flask-specific
+instance/
+
+# Other environment files (if you don't want to include them)
+.env.example
+.env.*
+
+# Logs
+*.log
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Pytest
+.cache/
+.pytest_cache/
+
+# Test coverage reports
+htmlcov/
+coverage.xml
+.coverage
+.tox/
+
+# MyPy
+.mypy_cache/
+
+# Editors and IDEs
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Pycharm
+*.iml
+*.iws
+*.ipr
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Dist/build
+build/
+dist/
+*.egg-info/
+
+# Misc
+*.bak
+*.swp

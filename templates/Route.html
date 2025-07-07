@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routing Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+#errorMessage.show {
+    display: block;
+    color: #a94442;
+    background-color: #f2dede;
+    padding: 12px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.save-job-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.save-job-btn .loading-spinner {
+    position: absolute;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.save-job-btn .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+        html, body {
+            height: 100svh;
+            width: 100svw;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            max-width: 95vw;
+            max-height: 95vh;
+            display: flex;
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+            display: grid;
+           grid-template-columns: 40% 60%;
+    width: 100vw;
+    height: 100%;
+       overflow: hidden;
+        }
+        .container::-webkit-scrollbar{
+            display: none;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .left-panel {
+            width: 100%;
+            padding-right: 10px;
+            /* overflow-y: auto; */
+            display: flex;
+            flex-direction: column;
+            overflow-y: scroll;
+            height: 100%;
+        }
+
+        .right-panel {
+            width: 100%;
+            padding-left: 10px;
+            /* overflow-y: auto; */
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            overflow-y: scroll;
+            height: 100%;
+        }
+         .right-panel::-webkit-scrollbar{
+            display: none;
+         }
+
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+            flex-shrink: 0;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            font-weight: 700;
+            margin-bottom: 6px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: #666;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .form-section {
+            background: rgba(247, 250, 252, 0.8);
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .section-title {
+            color: #333;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 3px;
+            height: 14px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 4px;
+            color: #555;
+            font-weight: 500;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .radio-option {
+            position: relative;
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .radio-option label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 12px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            min-width: 50px;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .radio-option label:hover {
+            border-color: #667eea;
+            transform: translateY(-1px);
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+        }
+
+        .unit-label {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-size: clamp(0.6rem, 1.8vw, 0.7rem);
+            pointer-events: none;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .calculate-btn:active {
+            transform: translateY(0);
+        }
+
+        .calculate-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .spinner {
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .results {
+            padding: 12px;
+            background: rgba(247, 250, 252, 0.8);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .results-title {
+            color: #333;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .results-title::before {
+            content: '✨';
+            font-size: 0.9rem;
+        }
+
+        .operation-card {
+            background: white;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .operation-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .operation-title {
+            color: #333;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: capitalize;
+        }
+
+        .machine-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 10px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 6px;
+            margin-bottom: 6px;
+        }
+
+        .machine-name {
+            font-weight: 500;
+            color: #333;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+        }
+
+        .machine-time {
+            color: #667eea;
+            font-weight: 600;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+            display: none;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+        }
+
+        .error-message.show {
+            display: block;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 20%, 40%, 60%, 80% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 10px;
+                margin: 5px;
+            }
+
+            .left-panel, .right-panel {
+                width: 100%;
+                padding: 0;
+            }
+
+            .right-panel {
+                border-left: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.3);
+                padding-top: 10px;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+
+        <div class="left-panel">
+            <div class="header">
+                <h1>Routing Calculator</h1>
+                <p>Calculate optimal routing</p>
+            </div>
+
+            <form id="routingForm">
+                <div class="form-grid">
+                    <div class="form-section">
+                        <h3 class="section-title">Product Configuration</h3>
+                    <div class="form-group">
+                        <label for="jobNumber">Job Number</label>
+                        <input type="text" id="jobNumber" name="jobNumber" class="form-control" placeholder="Enter job number">
+                    </div>
+                        <div class="form-group">
+                            <label>Product Type</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="fcu" name="productType" value="FCU">
+                                    <label for="fcu">FCU</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="chw" name="productType" value="CHW">
+                                    <label for="chw">CHW</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="dx" name="productType" value="DX">
+                                    <label for="dx">DX</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="conds" name="productType" value="Cond.S">
+                                    <label for="conds">Cond.S</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="condb" name="productType" value="Cond.B">
+                                    <label for="condb">Cond.B</label>
+                                </div>
+                                                                <div class="radio-option">
+                                    <input type="radio" id="Heatpipe" name="productType" value="Heatpipe">
+                                    <label for="Heatpipe">Heatpipe</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Dimension</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="dim38" name="diameter" value="3/8">
+                                    <label for="dim38">3/8"</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="dim12" name="diameter" value="1/2">
+                                    <label for="dim12">1/2"</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="dim58" name="diameter" value="5/8">
+                                    <label for="dim58">5/8"</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Material</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="cu" name="material" value="Cu">
+                                    <label for="cu">Cu</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="al" name="material" value="Al">
+                                    <label for="al">Al</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Pitch</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="pitch086" name="pitch" value="0.86">
+                                    <label for="pitch086">0.86"</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="pitch075" name="pitch" value="0.75">
+                                    <label for="pitch075">0.75"</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="pitchP40" name="pitch" value="P40">
+                                    <label for="pitchP40">P40</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="pitch15" name="pitch" value="1.5">
+                                    <label for="pitch15">1.5"</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="pitch60x30" name="pitch" value="60x30">
+                                    <label for="pitch60x30">60x30</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="pitchHalf" name="pitch" value="1/2">
+                                    <label for="pitchHalf">1/2"</label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title">Dimensions & Parameters</h3>
+                        
+                        <div class="form-group">
+                            <label for="finHeight">Fin Height</label>
+                            <div class="input-group">
+                                <input type="number" id="finHeight" name="finHeight" class="form-control" value="1200" placeholder="0" step="0.1">
+                                <span class="unit-label">mm</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="finLength">Fin Length</label>
+                            <div class="input-group">
+                                <input type="number" id="finLength" name="finLength" class="form-control" value="1200" placeholder="0" step="0.1">
+                                <span class="unit-label">mm</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rows">Rows</label>
+                            <input type="number" id="rows" name="rows" class="form-control" placeholder="0" value="1" step="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" name="quantity" class="form-control" value="1" placeholder="0" step="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fpi">FPI</label>
+                            <input type="number" id="fpi" name="fpi" class="form-control" placeholder="17" step="0.1" value="17">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title">Length Parameters</h3>
+                        
+                        <div class="form-group">
+                            <label for="l1">L1</label>
+                            <div class="input-group">
+                                <input type="number" id="l1" name="l1" class="form-control" placeholder="0" step="0.1">
+                                <span class="unit-label">mm</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="l2">L2</label>
+                            <div class="input-group">
+                                <input type="number" id="l2" name="l2" class="form-control" placeholder="0" step="0.1">
+                                <span class="unit-label">mm</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="l3">L3</label>
+                            <div class="input-group">
+                                <input type="number" id="l3" name="l3" class="form-control" placeholder="0" step="0.1">
+                                <span class="unit-label">mm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="calculate-btn" id="calculateBtn">
+                    <span class="btn-text">Calculate Routing</span>
+                    <div class="loading">
+                        <div class="spinner"></div>
+                    </div>
+                </button>
+            </form>
+
+            <div class="error-message" id="errorMessage"></div>
+        </div>
+
+<div class="right-panel">
+         <h3 class="results-title">Routing Results</h3>
+    <div class="results" id="results">
+   
+        <div id="resultsContent"></div>
+
+        <!-- Show error here -->
+        <div id="errorMessage" class="alert alert-danger" style="display: none;"></div>
+    </div>
+</div>
+<div id="toast" style="position: fixed; bottom: 20px; right: 20px; background: #4caf50; color: white; padding: 12px 20px; border-radius: 6px; display: none; font-weight: 600; z-index: 9999;"></div>
+
+    </div>
+
+    <script>
+        const form = document.getElementById('routingForm');
+        const calculateBtn = document.getElementById('calculateBtn');
+        const btnText = calculateBtn.querySelector('.btn-text');
+        const loading = calculateBtn.querySelector('.loading');
+        const results = document.getElementById('results');
+        const resultsContent = document.getElementById('resultsContent');
+        const errorMessage = document.getElementById('errorMessage');
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Reset state
+    results.style.display = 'none';            // Hide previous results
+    resultsContent.innerHTML = '';             // Clear results content
+    errorMessage.classList.remove('show');     // Hide old error
+    errorMessage.innerHTML = '';               // Clear error text
+
+    calculateBtn.disabled = true;
+    btnText.style.opacity = '0';
+    loading.style.display = 'block';
+
+    try {
+        const formData = new FormData(form);
+        const data = {};
+
+        for (let [key, value] of formData.entries()) {
+            // Only include fields with non-empty values
+            if (value !== '') {
+                data[key] = value;
+            }
+        }
+
+        // Required fields (excluding L1, L2, L3)
+        const required = ['productType', 'diameter', 'material', 'pitch'];
+        const missing = required.filter(field => !data[field]);
+
+        if (missing.length > 0) {
+            throw new Error(`Please select: ${missing.join(', ')}`);
+        }
+
+        const calculateResponse = await fetch('/occ-routes/api/calculate-routing-test', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (!calculateResponse.ok) {
+            throw new Error(`Calculate routing failed: ${calculateResponse.status}`);
+        }
+
+        const result = await calculateResponse.json();
+
+        if (!result.success) {
+            let message = result.error || 'Calculation failed';
+            showError(message);
+            return;
+        }
+
+        displayResults(result);
+        document.getElementById('errorMessage').style.display = 'none';
+    } catch (error) {
+        showError(error.message);
+    } finally {
+        calculateBtn.disabled = false;
+        btnText.style.opacity = '1';
+        loading.style.display = 'none';
+    }
+});
+function displayResults(result) {
+    const errorBox = document.getElementById('errorMessage');
+    const resultsContainer = document.getElementById('results');
+    const resultsContent = document.getElementById('resultsContent');
+
+    // Hide any previous errors
+    errorBox.innerHTML = '';
+    errorBox.style.display = 'none';
+
+    // Show the results panel
+    resultsContainer.style.display = 'block';
+
+    let html = '';
+
+    // ✅ Show Product & Family Info
+    if (result.product || result.product_family) {
+        html += `
+            <div style="margin-bottom: 15px; padding: 10px; background: rgba(102, 126, 234, 0.1); border-radius: 6px;">
+                <strong>Product:</strong> ${result.product || 'N/A'} | 
+                <strong>Family:</strong> ${result.product_family || 'N/A'}
+            </div>
+        `;
+    }
+
+    // ✅ Build Operation + Machines List
+    if (result.results && result.results.length > 0) {
+        result.results.forEach(operation => {
+            const preferredMachines = operation.machines.filter(machine => machine.preferred === true);
+
+            if (preferredMachines.length === 0) return;
+
+            html += `
+                <div class="operation-card">
+                    <div class="operation-title">${operation.operation} (Sequence: ${operation.sequence})</div>
+                    <div class="machines-list">
+            `;
+
+            preferredMachines.forEach(machine => {
+                const timeDisplay = machine.calculated_time 
+                    ? `${machine.calculated_time} ${machine.time_unit || 'min'}`
+                    : 'Time not calculated';
+
+                html += `
+                    <div class="machine-item">
+                        <span class="machine-name">${machine.id}</span>
+                        <span class="machine-time">${timeDisplay}</span>
+                    </div>
+                `;
+            });
+
+            html += '</div></div>';
+        });
+    }
+
+    // ✅ Append Save Job Button with spinner and text span
+    html += `
+        <button id="saveJobBtn" class="save-job-btn">
+            <span class="btn-text">Save Job with Routes</span>
+            <div class="loading-spinner" style="display: none;">
+                <div class="spinner"></div>
+            </div>
+        </button>
+    `;
+    // ✅ Update the results section
+    resultsContent.innerHTML = html;
+
+document.getElementById('saveJobBtn').addEventListener('click', async () => {
+    const btn = document.getElementById('saveJobBtn');
+    const btnText = btn.querySelector('.btn-text');
+    const loader = btn.querySelector('.loading-spinner');
+    const jobNumber = document.getElementById('jobNumber').value.trim() || "10292637";
+
+    const formData = new FormData(document.getElementById('routingForm'));
+    const data = {};
+
+    for (let [key, value] of formData.entries()) {
+        if (value !== '') {
+            data[key] = value;
+        }
+    }
+
+    const payload = {
+        formData: data,
+        results: result.results
+    };
+
+    // Reset any existing errors
+    errorBox.innerHTML = '';
+    errorBox.style.display = 'none';
+
+    // Show loader, disable button
+    btn.disabled = true;
+    btnText.style.opacity = '0.5';
+    loader.style.display = 'block';
+    // ✅ Also disable the Calculate Routing button
+    const calcBtn = document.getElementById('calculateBtn');
+    const calcBtnText = calcBtn.querySelector('.btn-text');
+    const calcLoader = calcBtn.querySelector('.loading');
+
+    calcBtn.disabled = true;
+    if (calcBtnText) calcBtnText.style.opacity = '0.5';
+    if (calcLoader) calcLoader.style.display = 'block';
+
+    // Reset any existing errors
+    errorBox.innerHTML = '';
+    errorBox.style.display = 'none';
+
+    // Show loader, disable button
+    btn.disabled = true;
+    btnText.style.opacity = '0.5';
+    loader.style.display = 'block';
+
+
+    try {
+        const saveResponse = await fetch('/occ-routes/api/saveJob', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const saveResult = await saveResponse.json();
+
+
+
+
+            if (!saveResult.success) {
+                errorBox.innerHTML = saveResult.message || "Failed to save job.";
+                errorBox.style.display = 'block';
+                errorBox.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                showToast("✅ Job saved successfully!");
+
+                // Clear all inputs
+                form.reset();
+
+                // Hide results
+                resultsContainer.style.display = 'none';
+                resultsContent.innerHTML = '';
+            }
+
+    } catch (err) {
+        errorBox.innerHTML = "❌ Error saving job: " + err.message;
+        errorBox.style.display = 'block';
+        errorBox.scrollIntoView({ behavior: 'smooth' });
+    } finally {
+        // Re-enable button
+        btn.disabled = false;
+        btnText.style.opacity = '1';
+        loader.style.display = 'none';
+
+                // ✅ Re-enable Calculate Routing button
+        calcBtn.disabled = false;
+        if (calcBtnText) calcBtnText.style.opacity = '1';
+        if (calcLoader) calcLoader.style.display = 'none';
+    }
+});
+
+}
+
+function showError(msg) {
+    const errorBox = document.getElementById('errorMessage');
+    const resultsContainer = document.getElementById('results');
+    const resultsContent = document.getElementById('resultsContent');
+
+    resultsContent.innerHTML = '';             // Clear any old results
+    errorBox.innerHTML = msg;                  // Insert error HTML
+    errorBox.style.display = 'block';          // Make it visible
+    resultsContainer.style.display = 'block';  // Ensure results panel is shown
+
+    // Smooth scroll to the error box
+    setTimeout(() => {
+        errorBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);  // slight delay to ensure visibility before scrolling
+}
+
+function showToast(message, background = '#4caf50') {
+    const toast = document.getElementById('toast');
+    toast.innerText = message;
+    toast.style.background = background;
+    toast.style.display = 'block';
+
+    setTimeout(() => {
+        toast.style.display = 'none';
+    }, 9000);
+}
+
+
+        document.querySelectorAll('.radio-option input').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const label = radio.nextElementSibling;
+                label.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    label.style.transform = '';
+                }, 200);
+            });
+        });
+
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.style.transform = 'translateY(-2px)';
+            });
+            
+            input.addEventListener('blur', () => {
+                input.parentElement.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>

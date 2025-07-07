@@ -1,5 +1,8 @@
+# requirements.txt
+Flask==2.2.3
+Werkzeug==2.2.3
+dotenv
+flask_cors
 requests
-python-dotenv
-Flask
 ortools
 plotly

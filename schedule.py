@@ -577,6 +577,7 @@ def plot_schedule(jobs, machines, all_tasks, solver, schedule_start, downtimes=N
 
     fig.show()
 
+
 def solve_schedule_mixed(jobs, machines, downtimes, scheduled_jobs=None):
     """
     Mixed schedule solver that handles individual job scheduling directions.

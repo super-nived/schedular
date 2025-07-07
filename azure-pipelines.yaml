@@ -1,0 +1,49 @@
+# @format
+
+trigger:
+  - main
+
+# pool:
+#   name: BuildPool
+#   demands:
+#    - agent.name -equals BuildAgent1
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  - name: repository
+    value: "iapps/OCC-routes-scheduler"
+  - name: containerRegistry
+    value: "DevOps-ACR"
+
+stages:
+  - stage: Build
+    displayName: Build image
+    jobs:
+      - job: Build
+        displayName: Build & Push Image
+        steps:
+          - task: Docker@2
+            displayName: Build Container Image
+            inputs:
+              command: build
+              repository: "$(repository)"
+              containerRegistry: "$(containerRegistry)"
+              Dockerfile: "./Dockerfile"
+              tags: "$(Build.BuildNumber)"
+          - task: Docker@2
+            displayName: Push Container Image
+            inputs:
+              command: push
+              repository: "$(repository)"
+              containerRegistry: "$(containerRegistry)"
+              tags: "$(Build.BuildNumber)"
+          - task: CmdLine@2
+            inputs:
+              script: "echo '$(Build.BuildNumber)'  > build_number"
+          - task: PublishPipelineArtifact@1
+            inputs:
+              targetPath: "./build_number"
+              artifact: "build_number"
+              publishLocation: "pipeline"
