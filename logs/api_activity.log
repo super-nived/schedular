@@ -228,3 +228,109 @@
 2025-07-07 09:50:52,738 - INFO - [Transform Time] Processed 1 downtime(s) in 0.000s
 2025-07-07 09:50:52,738 - INFO - [Total Process Time] Complete downtime process took 1.811s
 2025-07-07 09:50:52,738 - INFO - [Total Process Time] Complete downtime process took 1.811s
+2025-07-07 12:19:15,581 - INFO - Received POST request for /api/schedule_jobs
+2025-07-07 12:19:15,581 - INFO - Received POST request for /api/schedule_jobs
+2025-07-07 12:19:18,393 - INFO - [DB Fetch Time] Retrieved 35 records for 1 job(s) in 1.403s
+2025-07-07 12:19:18,393 - INFO - [DB Fetch Time] Retrieved 35 records for 1 job(s) in 1.403s
+2025-07-07 12:19:20,159 - INFO - [Downtime Request] Page 1: 1 records fetched in 0.924s
+2025-07-07 12:19:20,159 - INFO - [Downtime Request] Page 1: 1 records fetched in 0.924s
+2025-07-07 12:19:20,159 - INFO - [DB Fetch Time] Retrieved 1 downtime records after 2025-07-06T00:00:00 in 0.925s
+2025-07-07 12:19:20,159 - INFO - [DB Fetch Time] Retrieved 1 downtime records after 2025-07-06T00:00:00 in 0.925s
+2025-07-07 12:19:20,160 - INFO - [Transform Time] Processed 1 downtime(s) in 0.000s
+2025-07-07 12:19:20,160 - INFO - [Transform Time] Processed 1 downtime(s) in 0.000s
+2025-07-07 12:19:20,161 - INFO - [Total Process Time] Complete downtime process took 1.766s
+2025-07-07 12:19:20,161 - INFO - [Total Process Time] Complete downtime process took 1.766s
+2025-07-07 12:19:30,045 - INFO - [Scheduled Jobs Request] Page 1: 0 records fetched in 2.615s
+2025-07-07 12:19:30,045 - INFO - [Scheduled Jobs Request] Page 1: 0 records fetched in 2.615s
+2025-07-07 12:19:30,046 - INFO - [DB Fetch Time] Retrieved 0 scheduled job records after 2025-07-06T00:00:00 in 2.616s
+2025-07-07 12:19:30,046 - INFO - [DB Fetch Time] Retrieved 0 scheduled job records after 2025-07-06T00:00:00 in 2.616s
+2025-07-07 12:19:30,046 - ERROR - [Failed Section: Fetch Scheduled Jobs] No records found | Details: No scheduled job records found after 2025-07-06T00:00:00
+2025-07-07 12:19:30,046 - ERROR - [Failed Section: Fetch Scheduled Jobs] No records found | Details: No scheduled job records found after 2025-07-06T00:00:00
+2025-07-07 12:19:30,047 - ERROR - [Main Error] Failed to fetch scheduled job data
+2025-07-07 12:19:30,047 - ERROR - [Main Error] Failed to fetch scheduled job data
+2025-07-07 12:19:30,047 - WARNING - Failed to fetch scheduled job details: Failed to fetch scheduled job data. Using empty list.
+2025-07-07 12:19:30,047 - WARNING - Failed to fetch scheduled job details: Failed to fetch scheduled job data. Using empty list.
+2025-07-07 12:19:30,048 - ERROR - An unhandled exception occurred: time data '2025-07-11 12:00:00.000Z' does not match format '%Y-%m-%dT%H:%M:%S'
+Traceback (most recent call last):
+  File "/home/nived-c/demo/python/schedular/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nived-c/demo/python/schedular/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nived-c/demo/python/schedular/Main.py", line 166, in schedule_jobs
+    downtimes.append(Downtime(
+                     ^^^^^^^^^
+  File "/home/nived-c/demo/python/schedular/schedule.py", line 42, in __init__
+    self.start = datetime.strptime(start, "%Y-%m-%dT%H:%M:%S")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/_strptime.py", line 554, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/_strptime.py", line 333, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2025-07-11 12:00:00.000Z' does not match format '%Y-%m-%dT%H:%M:%S'
+2025-07-07 12:19:30,048 - ERROR - An unhandled exception occurred: time data '2025-07-11 12:00:00.000Z' does not match format '%Y-%m-%dT%H:%M:%S'
+Traceback (most recent call last):
+  File "/home/nived-c/demo/python/schedular/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nived-c/demo/python/schedular/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nived-c/demo/python/schedular/Main.py", line 166, in schedule_jobs
+    downtimes.append(Downtime(
+                     ^^^^^^^^^
+  File "/home/nived-c/demo/python/schedular/schedule.py", line 42, in __init__
+    self.start = datetime.strptime(start, "%Y-%m-%dT%H:%M:%S")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/_strptime.py", line 554, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/_strptime.py", line 333, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2025-07-11 12:00:00.000Z' does not match format '%Y-%m-%dT%H:%M:%S'
+2025-07-07 16:42:16,302 - INFO - Received POST request for /api/schedule_jobs
+2025-07-07 16:42:16,302 - INFO - Received POST request for /api/schedule_jobs
+2025-07-07 16:42:18,362 - INFO - [DB Fetch Time] Retrieved 32 records for 1 job(s) in 0.923s
+2025-07-07 16:42:18,362 - INFO - [DB Fetch Time] Retrieved 32 records for 1 job(s) in 0.923s
+2025-07-07 16:42:19,999 - INFO - [Downtime Request] Page 1: 1 records fetched in 0.736s
+2025-07-07 16:42:19,999 - INFO - [Downtime Request] Page 1: 1 records fetched in 0.736s
+2025-07-07 16:42:19,999 - INFO - [DB Fetch Time] Retrieved 1 downtime records after 2025-07-06T00:00:00 in 0.737s
+2025-07-07 16:42:19,999 - INFO - [DB Fetch Time] Retrieved 1 downtime records after 2025-07-06T00:00:00 in 0.737s
+2025-07-07 16:42:21,125 - INFO - [Transform Time] Processed 1 downtime(s) in 1.125s
+2025-07-07 16:42:21,125 - INFO - [Transform Time] Processed 1 downtime(s) in 1.125s
+2025-07-07 16:42:21,125 - INFO - [Total Process Time] Complete downtime process took 2.761s
+2025-07-07 16:42:21,125 - INFO - [Total Process Time] Complete downtime process took 2.761s
+2025-07-07 16:42:23,067 - INFO - [Scheduled Jobs Request] Page 1: 0 records fetched in 0.713s
+2025-07-07 16:42:23,067 - INFO - [Scheduled Jobs Request] Page 1: 0 records fetched in 0.713s
+2025-07-07 16:42:23,067 - INFO - [DB Fetch Time] Retrieved 0 scheduled job records after 2025-07-06T00:00:00 in 0.713s
+2025-07-07 16:42:23,067 - INFO - [DB Fetch Time] Retrieved 0 scheduled job records after 2025-07-06T00:00:00 in 0.713s
+2025-07-07 16:42:23,067 - ERROR - [Failed Section: Fetch Scheduled Jobs] No records found | Details: No scheduled job records found after 2025-07-06T00:00:00
+2025-07-07 16:42:23,067 - ERROR - [Failed Section: Fetch Scheduled Jobs] No records found | Details: No scheduled job records found after 2025-07-06T00:00:00
+2025-07-07 16:42:23,068 - ERROR - [Main Error] Failed to fetch scheduled job data
+2025-07-07 16:42:23,068 - ERROR - [Main Error] Failed to fetch scheduled job data
+2025-07-07 16:42:23,068 - WARNING - Failed to fetch scheduled job details: Failed to fetch scheduled job data. Using empty list.
+2025-07-07 16:42:23,068 - WARNING - Failed to fetch scheduled job details: Failed to fetch scheduled job data. Using empty list.
+2025-07-07 16:44:31,851 - INFO - Received POST request for /api/schedule_jobs
+2025-07-07 16:44:31,851 - INFO - Received POST request for /api/schedule_jobs
+2025-07-07 16:44:35,167 - INFO - [DB Fetch Time] Retrieved 32 records for 1 job(s) in 2.180s
+2025-07-07 16:44:35,167 - INFO - [DB Fetch Time] Retrieved 32 records for 1 job(s) in 2.180s
+2025-07-07 16:44:36,979 - INFO - [Downtime Request] Page 1: 1 records fetched in 0.615s
+2025-07-07 16:44:36,979 - INFO - [Downtime Request] Page 1: 1 records fetched in 0.615s
+2025-07-07 16:44:36,980 - INFO - [DB Fetch Time] Retrieved 1 downtime records after 2025-07-06T00:00:00 in 0.616s
+2025-07-07 16:44:36,980 - INFO - [DB Fetch Time] Retrieved 1 downtime records after 2025-07-06T00:00:00 in 0.616s
+2025-07-07 16:44:37,746 - INFO - [Transform Time] Processed 1 downtime(s) in 0.766s
+2025-07-07 16:44:37,746 - INFO - [Transform Time] Processed 1 downtime(s) in 0.766s
+2025-07-07 16:44:37,747 - INFO - [Total Process Time] Complete downtime process took 2.580s
+2025-07-07 16:44:37,747 - INFO - [Total Process Time] Complete downtime process took 2.580s
+2025-07-07 16:44:39,878 - INFO - [Scheduled Jobs Request] Page 1: 0 records fetched in 0.622s
+2025-07-07 16:44:39,878 - INFO - [Scheduled Jobs Request] Page 1: 0 records fetched in 0.622s
+2025-07-07 16:44:39,878 - INFO - [DB Fetch Time] Retrieved 0 scheduled job records after 2025-07-06T00:00:00 in 0.622s
+2025-07-07 16:44:39,878 - INFO - [DB Fetch Time] Retrieved 0 scheduled job records after 2025-07-06T00:00:00 in 0.622s
+2025-07-07 16:44:39,878 - ERROR - [Failed Section: Fetch Scheduled Jobs] No records found | Details: No scheduled job records found after 2025-07-06T00:00:00
+2025-07-07 16:44:39,878 - ERROR - [Failed Section: Fetch Scheduled Jobs] No records found | Details: No scheduled job records found after 2025-07-06T00:00:00
+2025-07-07 16:44:39,879 - ERROR - [Main Error] Failed to fetch scheduled job data
+2025-07-07 16:44:39,879 - ERROR - [Main Error] Failed to fetch scheduled job data
+2025-07-07 16:44:39,880 - WARNING - Failed to fetch scheduled job details: Failed to fetch scheduled job data. Using empty list.
+2025-07-07 16:44:39,880 - WARNING - Failed to fetch scheduled job details: Failed to fetch scheduled job data. Using empty list.

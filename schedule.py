@@ -724,81 +724,60 @@ def solve_schedule_mixed(jobs, machines, downtimes, scheduled_jobs=None):
         max_delivery = max(job.delivery_date for job in jobs)
         total_available_time = (max_delivery - schedule_start).total_seconds() / 60
 
-        print(f"\n📊 CAPACITY ANALYSIS:")
-        print(f"   Total processing demand: {total_demand:.0f} minutes ({total_demand/60:.1f} hours)")
-        print(f"   Time horizon: {total_available_time:.0f} minutes ({total_available_time/60:.1f} hours)")
-        print(f"   Overall utilization: {(total_demand/total_available_time)*100:.1f}%")
+        # Populate diagnostic information
+        diagnostics = {
+            "message": "No solution found using mixed scheduling.",
+            "capacity_analysis": {
+                "total_processing_demand_minutes": f"{total_demand:.0f}",
+                "total_processing_demand_hours": f"{total_demand/60:.1f}",
+                "time_horizon_minutes": f"{total_available_time:.0f}",
+                "time_horizon_hours": f"{total_available_time/60:.1f}",
+                "overall_utilization_percent": f"{(total_demand/total_available_time)*100:.1f}"
+            },
+            "impossible_jobs": [],
+            "tight_schedule_jobs": [],
+            "backward_scheduling_analysis": {},
+            "suggested_solutions": []
+        }
 
-        # Report issues and suggestions
         if impossible_jobs:
-            print(f"\n❌ IMPOSSIBLE JOBS ({len(impossible_jobs)} jobs):")
-            for job_id, min_time, available_time in impossible_jobs[:5]:  # Show first 5
-                deficit = min_time - available_time
-                print(f"   Job {job_id}: Needs {min_time:.0f} min, has {available_time:.0f} min (deficit: {deficit:.0f} min)")
-            if len(impossible_jobs) > 5:
-                print(f"   ... and {len(impossible_jobs) - 5} more jobs")
+            diagnostics["impossible_jobs"] = [
+                {
+                    "job_id": job_id,
+                    "needed_minutes": f"{min_time:.0f}",
+                    "available_minutes": f"{available_time:.0f}",
+                    "deficit_minutes": f"{min_time - available_time:.0f}"
+                } for job_id, min_time, available_time in impossible_jobs
+            ]
+            diagnostics["suggested_solutions"].append("Extend delivery dates for impossible jobs.")
 
         if tight_jobs:
-            print(f"\n⚠️  TIGHT SCHEDULE JOBS ({len(tight_jobs)} jobs):")
-            for job_id, min_time, available_time in tight_jobs[:5]:  # Show first 5
-                buffer = available_time - min_time
-                print(f"   Job {job_id}: Needs {min_time:.0f} min, has {available_time:.0f} min (buffer: {buffer:.0f} min)")
-            if len(tight_jobs) > 5:
-                print(f"   ... and {len(tight_jobs) - 5} more jobs")
+            diagnostics["tight_schedule_jobs"] = [
+                {
+                    "job_id": job_id,
+                    "needed_minutes": f"{min_time:.0f}",
+                    "available_minutes": f"{available_time:.0f}",
+                    "buffer_minutes": f"{available_time - min_time:.0f}"
+                } for job_id, min_time, available_time in tight_jobs
+            ]
+            diagnostics["suggested_solutions"].append("Consider adding buffer time to tight jobs.")
 
-        # Check backward scheduling conflicts
-        backward_jobs = [job for job in jobs if job.schedule_direction == 'backward']
-        if backward_jobs:
-            print(f"\n🔄 BACKWARD SCHEDULING ANALYSIS:")
-            print(f"   {len(backward_jobs)} jobs require backward scheduling")
-            early_delivery_jobs = [job for job in backward_jobs if job.delivery_date < schedule_start + timedelta(days=7)]
-            if early_delivery_jobs:
-                print(f"   {len(early_delivery_jobs)} jobs have very early delivery dates")
-
-        print(f"\n💡 SUGGESTED SOLUTIONS:")
-
-        if impossible_jobs:
-            print(f"   1. 📅 EXTEND DELIVERY DATES:")
-            print(f"      - Move delivery dates later for jobs: {[job_id for job_id, _, _ in impossible_jobs[:10]]}")
-            print(f"      - Add at least {max(deficit for _, deficit, _ in [(j, mt-at, at) for j, mt, at in impossible_jobs]):.0f} minutes buffer")
-
-        if tight_jobs or impossible_jobs:
-            print(f"   2. 📉 REDUCE JOB QUANTITIES:")
-            print(f"      - Consider splitting large jobs into smaller batches")
-            print(f"      - Reduce quantities for jobs with tight schedules")
+        backward_jobs_list = [job for job in jobs if job.schedule_direction == 'backward']
+        if backward_jobs_list:
+            diagnostics["backward_scheduling_analysis"] = {
+                "count": len(backward_jobs_list),
+                "message": f"{len(backward_jobs_list)} jobs require backward scheduling."
+            }
 
         if total_demand / total_available_time > 0.9:
-            print(f"   3. 🏭 INCREASE CAPACITY:")
-            print(f"      - Add more machines or increase working hours")
-            print(f"      - Current utilization is {(total_demand/total_available_time)*100:.1f}% (>90% is very tight)")
-
-        if len(backward_jobs) > len(jobs) * 0.5:
-            print(f"   4. 🔄 ADJUST SCHEDULING DIRECTIONS:")
-            print(f"      - Too many jobs ({len(backward_jobs)}) use backward scheduling")
-            print(f"      - Consider changing some to 'forward' or None for more flexibility")
-
-        print(f"   5. 🎯 REDUCE PROBLEM COMPLEXITY:")
-        print(f"      - Try scheduling fewer jobs at once (e.g., 20-50 jobs)")
-        print(f"      - Focus on high-priority jobs first")
-
-        print(f"   6. ⚙️  ADJUST SOLVER SETTINGS:")
-        print(f"      - Increase solver time limit")
-        print(f"      - Relax some constraints if business allows")
-
-        print(f"\n🔧 QUICK FIXES TO TRY:")
-        if impossible_jobs:
-            earliest_impossible = min(impossible_jobs, key=lambda x: x[0])
-            job_id, min_time, available_time = earliest_impossible
-            deficit_days = (min_time - available_time) / (24 * 60)
-            print(f"   - Move Job {job_id} delivery date {deficit_days:.1f} days later")
+            diagnostics["suggested_solutions"].append("Increase capacity by adding more machines or working hours.")
 
         if len(jobs) > 50:
-            print(f"   - Reduce to first 20 jobs: jobs = jobs[:20]")
+            diagnostics["suggested_solutions"].append("Reduce problem complexity by scheduling fewer jobs at once.")
 
-        if len(backward_jobs) > 10:
-            print(f"   - Change some backward jobs to forward: job.schedule_direction = 'forward'")
+        # Add diagnostics to the result
+        result["diagnostics"] = diagnostics
 
-        return None, None, [], [], [], result
 def solve_schedule(jobs, machines, downtimes, scheduled_jobs=None, direction='forward'):
     """
     Legacy function for backward compatibility.

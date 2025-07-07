@@ -41,6 +41,23 @@ def log_detailed_error(section, error_message, details=None):
     logger.error(error_msg)
     return error_msg
 
+# Global error handler
+@app.errorhandler(Exception)
+def handle_exception(e):
+    # Log the error
+    logger.error(f"An unhandled exception occurred: {str(e)}", exc_info=True)
+    
+    # Return a JSON response
+    return jsonify({
+        'status': 'error',
+        'message': f'An unexpected error occurred: {str(e)}'
+    }), 500
+
+
+
+
+
+#schedule apis
 
 @app.route('/api/schedule_jobs', methods=['POST'])
 def schedule_jobs():
@@ -230,13 +247,24 @@ def schedule_jobs():
     print("STARTING MIXED SCHEDULING")
     print("="*60)
 
-    print("✅ Input validation passed. Starting mixed scheduling (using individual job directions)...")
-    result = choose_scheduling_approach(jobs, machines, downtimes, scheduled_jobs)
-    
-    # Extract the schedule_result from the 'mixed' approach
-    schedule_result = result.get('mixed', {}).get('schedule_result', {})
-    
-    return jsonify(schedule_result), 200
+    try:
+        result = choose_scheduling_approach(jobs, machines, downtimes, scheduled_jobs)
+        
+        # Extract the schedule_result from the 'mixed' approach
+        schedule_result = result.get('mixed', {}).get('schedule_result', {})
+        
+        return jsonify(schedule_result), 200
+
+    except Exception as e:
+        # Log the exception and return a JSON error response
+        error_msg = f"An unexpected error occurred during scheduling: {str(e)}"
+        logger.error(error_msg)
+        return jsonify({
+            'status': 'error',
+            'message': error_msg
+        }), 500
+
+
 
 @app.route('/api/routes', methods=['POST'])
 def get_routes():
@@ -253,6 +281,7 @@ def get_routes():
     result = getAndTransformDowntimes(today_date)
     return jsonify(result)
 
-if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=6000)
 
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=6000, debug=True, use_reloader=False)
